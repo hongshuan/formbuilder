@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html><head>
+
+  <meta charset="utf-8" />
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+
+  <title>Form Builder</title>
+
+  <link type="text/css" rel="stylesheet" href="style.css">
+
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+
+  <script src="dummy.js"></script>
+  <script src="codegen.js"></script>
+  <script src="images.js"></script>
+
+  <script type="text/javascript">
+    $(document).ready(function() {
+		fillImageList();
+
+        $("#descriptor").change(function() {
+            //$.data(currentDummy(), 'type', descriptorType());
+            //$.data(currentDummy(), 'data-title', descriptorType());
+            //currentDummy().attr('title', descriptorType());
+        });
+
+        $("#bkimglist").change(function() {
+            $('#source-form').css('background-image', imageUrl($('#bkimglist option:selected').text()));
+			//$('.dummy').remove();
+        });
+        $("#bkimglist").change();
+
+        $("#btn-gen-code").click(function() {
+            if ($('.selected').length == 0) {
+                refreshCode();
+            } else {
+				switch (descriptorType()) {
+					case 'string':
+						genStringDescriptor(); break;
+					case 'date':
+						genDateDescriptor(); break;
+					case 'number':
+						genNumberDescriptor(); break;
+					case 'clauses':
+						//genClausesDescriptor(); break;
+					case 'image':
+						//genImageDescriptor(); break;
+					case 'checkbox':
+						//genCheckboxDescriptor(); break;
+					case 'radio':
+						genRadioDescriptor(); break;
+					case 'telephone':
+						genTelephoneDescriptor(); break;
+					case 'signature':
+						genSignatureField(); break;
+					case 'select':
+						//genSelectDescriptor(); break;
+				}
+            }
+            return false;
+        });
+    });
+  </script>
+
+</head><body>
+
+  <div id="source-form"></div>
+  <form>
+    <div><select id="bkimglist"></select></div>
+
+    <div>
+      <select id="descriptor">
+        <option value=""></option>
+        <option value="string">StringDescriptor</option>
+
+        <option value=""></option>
+        <option value="date">DateDescriptor</option>
+        <option value="date-year">- Date - Year</option>
+        <option value="date-month">- Date - Month</option>
+        <option value="date-day">- Date - Day</option>
+
+        <option value=""></option>
+        <option value="number">NumberDescriptor</option>
+        <option value="clauses">ClausesDescriptor</option>
+        <option value="image">ImageDescriptor</option>
+        <option value="checkbox">CheckboxDescriptor</option>
+
+        <option value=""></option>
+        <option value="radio">RadioDescriptor</option>
+        <option value="radio-item">- RadioDescriptorItem</option>
+
+        <option value=""></option>
+        <option value="telephone">TelephoneDescriptor</option>
+        <option value="tel-item">- TelephoneDescriptorItem</option>
+
+        <option value=""></option>
+        <option value="select">SelectDescriptor</option>
+        <option value="signature">SignatureDescriptor</option>
+      </select>
+      <button id="btn-gen-code">Gen Code</button>
+    </div>
+
+    <textarea id="output" wrap="off"></textarea>
+
+  </form>
+
+</body></html>
