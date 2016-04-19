@@ -208,19 +208,30 @@ function genSignatureField() {
 		var left = $(this).css('left').slice(0, -2);
 		var width = $(this).css('width').slice(0, -2);
 
-		lines.push("'position' => new Position([");
-		lines.push("  'top' => " + top + ",");
-		lines.push("  'left' => " + left + ",");
-		lines.push("  'width' => " + width + ",");
-		lines.push("  'height' => 33");
-		lines.push("]),");
+		if (index == 0) {
+			lines.push("'position' => new Position([");
+			lines.push("  'top' => " + top + ",");
+			lines.push("  'left' => " + left + ",");
+			lines.push("  'width' => " + width + ",");
+			lines.push("  'height' => 23");
+			lines.push("]),");
+		}
+
+		if (index == 1) {
+			lines.push("'position_date' => new Position([");
+			lines.push("  'top' => " + top + ",");
+			lines.push("  'left' => " + left + ",");
+			lines.push("  'width' => " + width + ",");
+			lines.push("  'height' => 23");
+			lines.push("]),");
+		}
 	});
 
 	lines.push("  'type' => SignatureFieldType::INITIALS,");
 	lines.push("  'roles' => [");
 	lines.push("     new DealRoleMap([");
-	lines.push("       'party_type' => DealPartyType::XXX,");
-	lines.push("       'role_tag' => DealRoleTag::XXX,");
+	lines.push("       'party_type' => DealPartyType::RECEIVING,");
+	lines.push("       'role_tag' => DealRoleTag::PARTY_REP_PRIMARY,");
 	lines.push("     ])");
 	lines.push("  ]");
 	lines.push("]),\n");
