@@ -99,7 +99,7 @@ function genStringDescriptor() {
 	var lines = [];
 
 	lines.push("new Descriptors\\StringDescriptor([");
-	lines.push("  'caption' => '......',"),
+	lines.push("  'caption' => 'XXX',"),
 	lines.push("  'positions' => [");
 
 	divs.each(function() {
@@ -130,7 +130,7 @@ function genDateDescriptor() {
 	var lines = [];
 
 	lines.push("new Descriptors\\DateDescriptor([");
-	lines.push("  'caption' => 'Date of ...',");
+	lines.push("  'caption' => 'Date of',");
 	lines.push("  'items' => [");
 
 	divs.each(function(index) {
@@ -179,7 +179,7 @@ function genNumberDescriptor() {
 
 	lines.push("new Descriptors\\NumberDescriptor([");
 	lines.push("  'format' => NumberFormat::CURRENCY,");
-	lines.push("  'caption' => 'Price of ...',");
+	lines.push("  'caption' => 'Price of',");
 
 	divs.each(function(index) {
 		var top = $(this).css('top').slice(0, -2); // remove 'px'
@@ -288,16 +288,16 @@ function genRadioDescriptor() {
 	var lines = [];
 
 	lines.push("new Descriptors\\RadioDescriptor([");
-	lines.push("	'caption' => '...',");
+	lines.push("	'caption' => 'XXX',");
 	lines.push("	'items' => [");
 	lines.push("		new Descriptors\\RadioDescriptorItem([");
 	lines.push("			'select_option' => new SelectOption([");
-	lines.push("				'caption' => '...'");
+	lines.push("				'caption' => 'XXX'");
 	lines.push("			])");
 	lines.push("		]),");
 	lines.push("		new Descriptors\\RadioDescriptorItem([");
 	lines.push("			'select_option' => new SelectOption([");
-	lines.push("				'caption' => '...'");
+	lines.push("				'caption' => 'XXX'");
 	lines.push("			])");
 	lines.push("		])");
 	lines.push("	],");
