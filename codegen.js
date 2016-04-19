@@ -32,11 +32,16 @@ function formatCode(lines) {
 }
 
 function showCode(code, append = false) {
+	var textarea = document.getElementById('output');
+
 	if (append) {
-		document.getElementById('output').value += formatCode(code).join("\n");
+		textarea.value += formatCode(code).join("\n");
 	} else {
-		document.getElementById('output').value = formatCode(code).join("\n");
+		textarea.value = formatCode(code).join("\n");
 	}
+
+	textarea.select();
+	document.execCommand('copy'); // copy code to clipboard
 }
 
 function showAllPositions() {
