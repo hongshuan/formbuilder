@@ -251,7 +251,7 @@ function genTelephoneDescriptor() {
 	lines.push("  'caption' => 'Telephone',");
 	lines.push("  'format' => StringFormat::TELEPHONE,");
 	lines.push("  'items' => [");
-	lines.push("    new Descriptors\TelephoneDescriptorItem([");
+	lines.push("    new Descriptors\\TelephoneDescriptorItem([");
 	lines.push("      'format' => TelephoneFormat::CANADIAN,");
 
 	divs.each(function(index) {
