@@ -31,8 +31,12 @@ function formatCode(lines) {
 	return lines;
 }
 
-function showCode(code) {
-	document.getElementById('output').value += formatCode(code).join("\n");
+function showCode(code, append = false) {
+	if (append) {
+		document.getElementById('output').value += formatCode(code).join("\n");
+	} else {
+		document.getElementById('output').value = formatCode(code).join("\n");
+	}
 }
 
 function refreshCode() {
@@ -43,15 +47,19 @@ function refreshCode() {
 		el = $('.dummy');
 	}
 
+	var lines = [];
+
 	el.each(function(index) {
-		showCode(genPosition(
+		lines.push(genPosition(
 			$(this).css('top').slice(0, -2), // remove 'px'
 			$(this).css('left').slice(0, -2),
 			$(this).css('width').slice(0, -2),
 			0,
 			$(this).text()
-		));
+		).join("\n"));
 	});
+
+	showCode(lines);
 }
 
 // generate code
@@ -73,7 +81,7 @@ function genPosition(top, left, width, height, index) {
 
 	lines.push("]),\n");
 
-	return lines;
+	return formatCode(lines);
 }
 
 function descriptorType() {
