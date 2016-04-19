@@ -309,6 +309,30 @@ function genImageDescriptor() {
 }
 
 function genCheckboxDescriptor() {
+	var divs = $('.selected');
+	if (divs.length == 0) {
+		return;
+	}
+
+	var lines = [];
+
+	divs.each(function(index) {
+		var top = $(this).css('top').slice(0, -2); // remove 'px'
+		var left = $(this).css('left').slice(0, -2);
+		var width = $(this).css('width').slice(0, -2);
+
+		lines.push("new Descriptors\\CheckboxDescriptor([");
+		lines.push("	'caption' => 'Checkbox',");
+		lines.push("	'position' => new Position([");
+		lines.push("		'top' => " + top + ",");
+		lines.push("		'left' => " + left + ",");
+		lines.push("		'width' => " + width + ",");
+		lines.push("		'height' => 15");
+		lines.push("	])
+		lines.push("]),
+	});
+
+	showCode(lines);
 }
 
 function genSelectDescriptor() {
