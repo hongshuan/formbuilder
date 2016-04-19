@@ -110,7 +110,7 @@ function genStringDescriptor() {
 
 	lines.push("  ],");
 	lines.push("  'callbacks' => [],");
-	lines.push("]);\n");
+	lines.push("]),\n");
 	
 	showCode(lines);
 }
@@ -328,8 +328,8 @@ function genCheckboxDescriptor() {
 		lines.push("		'left' => " + left + ",");
 		lines.push("		'width' => " + width + ",");
 		lines.push("		'height' => 15");
-		lines.push("	])
-		lines.push("]),
+		lines.push("	])");
+		lines.push("]),");
 	});
 
 	showCode(lines);
