@@ -23,7 +23,6 @@ onmouseup = function(e) {
 		endY = e.pageY;
 
 		genDummy();
-		//refreshCode();
 	}
 };
 
@@ -39,7 +38,6 @@ onkeyup = function(e) {
 	if (ctrlKey) {
 		if (key == 90) { // Ctrl-Z
 			//current.remove(); // Undo
-			//refreshCode();
 		} else if (key == 39) { // Right
 			current.css({'width': "+=1px"});
 		} else if (key == 37) { // Left
@@ -55,13 +53,11 @@ onkeyup = function(e) {
 		} else if (key == 40) { // Down
 			current.css({'top': "+=1px"});
 		} else if (key == 27) { // ESC
-			// press ESC to re-generate code after manually changed css attributes of div
-			//refreshCode();
+			// press ESC
 		} else if (key == 46) { // Delete
 			if ($('.selected').length > 0) {
 				$('.selected').remove();
 				indexDummies();
-				//refreshCode();
 			}
 		}
 	}

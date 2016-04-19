@@ -32,9 +32,7 @@
         $("#bkimglist").change();
 
         $("#btn-gen-code").click(function() {
-            if ($('.selected').length == 0) {
-                refreshCode();
-            } else {
+            if ($('.selected').length > 0) {
 				switch (descriptorType()) {
 					case 'string':
 						genStringDescriptor(); break;
@@ -56,7 +54,11 @@
 						genSignatureField(); break;
 					case 'select':
 						genSelectDescriptor(); break;
+					default:
+						showAllPositions(); break;
 				}
+            } else {
+                showAllPositions();
             }
             return false;
         });

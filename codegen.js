@@ -39,9 +39,7 @@ function showCode(code, append = false) {
 	}
 }
 
-function refreshCode() {
-	document.getElementById('output').value = '';
-
+function showAllPositions() {
 	var el = $('.selected');
 	if (el.length == 0) {
 		el = $('.dummy');
