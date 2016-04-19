@@ -44,6 +44,33 @@ function showCode(code, append = false) {
 	document.execCommand('copy'); // copy code to clipboard
 }
 
+function genCode(type) {
+	switch (type) {
+		case 'string':
+			genStringDescriptor(); break;
+		case 'date':
+			genDateDescriptor(); break;
+		case 'number':
+			genNumberDescriptor(); break;
+		case 'clauses':
+			genClausesDescriptor(); break;
+		case 'image':
+			genImageDescriptor(); break;
+		case 'checkbox':
+			genCheckboxDescriptor(); break;
+		case 'radio':
+			genRadioDescriptor(); break;
+		case 'telephone':
+			genTelephoneDescriptor(); break;
+		case 'signature':
+			genSignatureField(); break;
+		case 'select':
+			genSelectDescriptor(); break;
+		default:
+			showAllPositions(); break;
+	}
+}
+
 function showAllPositions() {
 	var el = $('.selected');
 	if (el.length == 0) {
