@@ -2,11 +2,6 @@ var IMAGE_PATH = 'import/source-forms/';
 var IMAGE_PATH = 'file:///src/code/app-core/import/source-forms/gif/flat/';
 
 var images = [
-	"OREA Form 545 [2016]-0",
-	"OREA Form 545 [2016]-1",
-	"OREA Form 545 [2016]-2",
-
-	"",
 	"OREA Form 601 [2016]-0",
 	"OREA Form 601 [2016]-1",
 	"OREA Form 601 [2016]-2",
@@ -34,6 +29,11 @@ var images = [
 	"",
 	"OREA Form 565 [2016]-0",
 	"OREA Form 565 [2016]-1",
+
+	"",
+	"OREA Form 545 [2016]-0",
+	"OREA Form 545 [2016]-1",
+	"OREA Form 545 [2016]-2",
 */
 ];
 
