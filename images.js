@@ -19,12 +19,6 @@ var images = [
 	"OREA Form 632 [2016]-3",
 
 	"",
-	"OREA Form 632 [2016]-0",
-	"OREA Form 632 [2016]-1",
-	"OREA Form 632 [2016]-2",
-	"OREA Form 632 [2016]-3",
-
-	"",
 	"OREA Form 633 [2015]-0",
 	"OREA Form 633 [2015]-1",
 	"OREA Form 633 [2015]-2",
