@@ -40,3 +40,18 @@ textarea {
 
 .signature { height: 50px; }
 
+.dummy[data-title]:hover:after {
+    content: attr(data-title);
+    padding: 4px 8px;
+    color: #000;
+    position: absolute;
+    left: 50%;
+    top: 100%;
+    margin-top: 5px;
+    white-space: nowrap;
+    z-index: 999px;
+    border-radius: 5px;
+    box-shadow: 2px 2px 2px #222;
+    background-color: #ffffaa;
+    opacity: 1;
+}
