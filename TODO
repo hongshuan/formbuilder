@@ -21,3 +21,25 @@ dummy.js
 - editAttributes(el)
 - saveAttributes(el)    $.data(el, 'attrs', json)
 
+jQuery reverse each
+===================
+
+//=
+$($(".dummy").get().reverse()).each(function(index) {
+    console.log(index + ' ' + $(this).text());
+});
+
+//=
+jQuery.fn.reverse = [].reverse;
+
+$('.dummy').reverse().each(function(index) {
+    console.log(index + ' ' + $(this).text());
+});
+
+//=
+jQuery.fn.reverse = function() {
+    return this.pushStack(this.get().reverse(), arguments);
+};
+
+$(selector).reverse().each(...)
+
