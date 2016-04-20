@@ -251,26 +251,39 @@ function genSignatureField() {
 		var left = $(this).css('left').slice(0, -2);
 		var width = $(this).css('width').slice(0, -2);
 
-		if (index == 0) {
+		if (divs.length == 1) { // Initials
 			lines.push("'position' => new Position([");
-			lines.push("  'top' => " + top + ",");
+			lines.push("  'top' => " + (top - 40) + ","); // ??
 			lines.push("  'left' => " + left + ",");
-			lines.push("  'width' => " + width + ",");
-			lines.push("  'height' => 23");
+			lines.push("  'width' => 88,");
+			lines.push("  'height' => 35");
 			lines.push("]),");
-		}
+		} else {
+			if (index == 0) {
+				lines.push("'position' => new Position([");
+				lines.push("  'top' => " + (top -23) + ","); // ??
+				lines.push("  'left' => " + left + ",");
+				lines.push("  'width' => " + width + ",");
+				lines.push("  'height' => 23");
+				lines.push("]),");
+			}
 
-		if (index == 1) {
-			lines.push("'position_date' => new Position([");
-			lines.push("  'top' => " + top + ",");
-			lines.push("  'left' => " + left + ",");
-			lines.push("  'width' => " + width + ",");
-			lines.push("  'height' => 23");
-			lines.push("]),");
+			if (index == 1) {
+				lines.push("'position_date' => new Position([");
+				lines.push("  'top' => " + (top -23) + ","); // ??
+				lines.push("  'left' => " + left + ",");
+				lines.push("  'width' => " + width + ",");
+				lines.push("  'height' => 23");
+				lines.push("]),");
+			}
 		}
 	});
 
-	lines.push("  'type' => SignatureFieldType::INITIALS,");
+	if (divs.length == 1) { // Initials
+		lines.push("  'type' => SignatureFieldType::INITIALS,");
+	} else {
+		lines.push("  'type' => SignatureFieldType::SIGNATURE,");
+	}
 	lines.push("  'roles' => [");
 	lines.push("     new DealRoleMap([");
 	lines.push("       'party_type' => DealPartyType::RECEIVING,");
@@ -362,15 +375,16 @@ function genCheckboxDescriptor() {
 	divs.each(function(index) {
 		var top = $(this).css('top').slice(0, -2); // remove 'px'
 		var left = $(this).css('left').slice(0, -2);
-		var width = $(this).css('width').slice(0, -2);
+		var width = 15; //$(this).css('width').slice(0, -2);
+		var height = 15;
 
 		lines.push("new Descriptors\\CheckboxDescriptor([");
 		lines.push("	'caption' => 'Checkbox',");
 		lines.push("	'position' => new Position([");
-		lines.push("		'top' => " + top + ",");
+		lines.push("		'top' => " + (top - height) + ",");
 		lines.push("		'left' => " + left + ",");
 		lines.push("		'width' => " + width + ",");
-		lines.push("		'height' => 15");
+		lines.push("		'height' => " + height);
 		lines.push("	])");
 		lines.push("]),");
 	});
