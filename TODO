@@ -43,3 +43,11 @@ jQuery.fn.reverse = function() {
 
 $(selector).reverse().each(...)
 
+//=
+jQuery.fn.reverse = function(fn) {
+    var i = this.length;
+    while (i--) {
+        fn.call(this[i], i, this[i])
+    }
+};
+
