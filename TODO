@@ -1,0 +1,23 @@
+dummy.js
+========
+
+- createNewDummy()
+- getAllDummies()
+- getLastDummy()
+- getSelectedDummy()
+- deleteLastDummy()
+- deleteSelectedDummy()
+- deleteAllDummies()
+
+- move(el, dx, dy)
+- moveLeft(el, dx)
+- moveRight(el, dx)
+- moveUp(el, dy)
+- moveDown(el, dy)
+
+- resize(el, dx, dy = 0)
+
+- getAttributes(el)     $.data(el, 'attrs') 
+- editAttributes(el)
+- saveAttributes(el)    $.data(el, 'attrs', json)
+
