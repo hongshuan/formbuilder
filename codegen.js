@@ -162,7 +162,7 @@ function genDateDescriptor() {
 	var lines = [];
 
 	lines.push("new Descriptors\\DateDescriptor([");
-	lines.push("  'caption' => 'Date of',");
+	lines.push("  'caption' => 'Date',");
 	lines.push("  'items' => [");
 
 	divs.each(function(index) {
@@ -170,19 +170,24 @@ function genDateDescriptor() {
 		var left = $(this).css('left').slice(0, -2);
 		var width = $(this).css('width').slice(0, -2);
 
-		if (index == 0) {
+		if (divs.length == 1) {
 			lines.push("new Descriptors\\DateDescriptorItem([");
-			lines.push("  'format' => DateFormat::DAY_TH,");
-		}
+			lines.push("  'format' => DateFormat::DATE_FULL,");
+		} else {
+			if (index == 0) {
+				lines.push("new Descriptors\\DateDescriptorItem([");
+				lines.push("  'format' => DateFormat::DAY_TH,");
+			}
 
-		if (index == 1) {
-			lines.push("new Descriptors\\DateDescriptorItem([");
-			lines.push("  'format' => DateFormat::MONTH_FULL,");
-		}
+			if (index == 1) {
+				lines.push("new Descriptors\\DateDescriptorItem([");
+				lines.push("  'format' => DateFormat::MONTH_FULL,");
+			}
 
-		if (index == 2) {
-			lines.push("new Descriptors\\DateDescriptorItem([");
-			lines.push("  'format' => DateFormat::YEAR_HALF,");
+			if (index == 2) {
+				lines.push("new Descriptors\\DateDescriptorItem([");
+				lines.push("  'format' => DateFormat::YEAR_HALF,");
+			}
 		}
 
 		lines.push("'position' => new Position([");
