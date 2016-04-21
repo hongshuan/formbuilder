@@ -174,6 +174,11 @@ function genDateDescriptor() {
 			lines.push("new Descriptors\\DateDescriptorItem([");
 			lines.push("  'format' => DateFormat::DATE_FULL,");
 		} else {
+			if (divs.length == 4 && index == 0) {
+				lines.push("new Descriptors\\DateDescriptorItem([");
+				lines.push("  'format' => DateFormat::TIME,");
+			}
+
 			if (index == 0) {
 				lines.push("new Descriptors\\DateDescriptorItem([");
 				lines.push("  'format' => DateFormat::DAY_TH,");
