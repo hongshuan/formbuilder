@@ -20,7 +20,7 @@ textarea {
 	background-repeat: no-repeat;
 }
 
-form { float: left; }
+form { position: fixed; right: 50px; }
 
 textarea { 
 	width: 400px;
