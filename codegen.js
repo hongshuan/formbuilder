@@ -307,22 +307,22 @@ function genTelephoneDescriptor() {
 	lines.push("  'caption' => 'Telephone',");
 	lines.push("  'format' => StringFormat::TELEPHONE,");
 	lines.push("  'items' => [");
-	lines.push("    new Descriptors\\TelephoneDescriptorItem([");
-	lines.push("      'format' => TelephoneFormat::CANADIAN,");
 
 	divs.each(function(index) {
 		var top = $(this).css('top').slice(0, -2); // remove 'px'
 		var left = $(this).css('left').slice(0, -2);
 		var width = $(this).css('width').slice(0, -2);
 
-		lines.push("'position' => new Position([");
-		lines.push("  'top' => " + top + ",");
-		lines.push("  'left' => " + left + ",");
-		lines.push("  'width' => " + width + ",");
+		lines.push("new Descriptors\\TelephoneDescriptorItem([");
+		lines.push("  'format' => TelephoneFormat::CANADIAN,");
+		lines.push("  'position' => new Position([");
+		lines.push("    'top' => " + top + ",");
+		lines.push("    'left' => " + left + ",");
+		lines.push("    'width' => " + width + ",");
+		lines.push("  ]),");
 		lines.push("]),");
 	});
 
-	lines.push("    ]),");
 	lines.push("  ]");
 	lines.push("]),\n");
 	
