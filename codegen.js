@@ -313,14 +313,38 @@ function genTelephoneDescriptor() {
 		var left = $(this).css('left').slice(0, -2);
 		var width = $(this).css('width').slice(0, -2);
 
-		lines.push("new Descriptors\\TelephoneDescriptorItem([");
-		lines.push("  'format' => TelephoneFormat::CANADIAN,");
-		lines.push("  'position' => new Position([");
-		lines.push("    'top' => " + top + ",");
-		lines.push("    'left' => " + left + ",");
-		lines.push("    'width' => " + width + ",");
-		lines.push("  ]),");
-		lines.push("]),");
+		if (divs.length == 1) {
+			lines.push("new Descriptors\\TelephoneDescriptorItem([");
+			lines.push("  'format' => TelephoneFormat::CANADIAN,");
+			lines.push("  'position' => new Position([");
+			lines.push("    'top' => " + top + ",");
+			lines.push("    'left' => " + left + ",");
+			lines.push("    'width' => " + width + ",");
+			lines.push("  ]),");
+			lines.push("]),");
+		} else {
+			if (index == 0) {
+				lines.push("new Descriptors\\TelephoneDescriptorItem([");
+				lines.push("  'format' => TelephoneFormat::CANADIAN_AREA_CODE,");
+				lines.push("  'position' => new Position([");
+				lines.push("    'top' => " + top + ",");
+				lines.push("    'left' => " + left + ",");
+				lines.push("    'width' => " + width + ",");
+				lines.push("  ]),");
+				lines.push("]),");
+			}
+
+			if (index == 1) {
+				lines.push("new Descriptors\\TelephoneDescriptorItem([");
+				lines.push("  'format' => TelephoneFormat::CANADIAN_7_DIGIT,");
+				lines.push("  'position' => new Position([");
+				lines.push("    'top' => " + top + ",");
+				lines.push("    'left' => " + left + ",");
+				lines.push("    'width' => " + width + ",");
+				lines.push("  ]),");
+				lines.push("]),");
+			}
+		}
 	});
 
 	lines.push("  ]");
