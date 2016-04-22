@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html >
+<head>
+<meta charset="UTF-8">
+<meta name="google" value="notranslate">
+<title>CodePen - Simple Login Control in CSS</title>
+<style>
+	@import url(https://fonts.googleapis.com/css?family=Roboto);
+	html, body {
+		width: 100%;
+		height: 100%;
+	}
+
+	body {
+		background: #374046;
+		font-family: "Roboto", sans-serif;
+	}
+	.container {
+		background: #fff;
+		box-shadow: 0 0 15px 0 rgba(0, 0, 0, .75);
+		margin: 0 auto;
+		width: 300px !important;
+	}
+	.heading {
+		background: #3f51b5;
+		border-top: 10px solid #303f9f;
+		box-shadow: 0 0 5px 0 rgba(0, 0, 0, .75);
+		padding: 25px 15px;
+	}
+	h1 {
+		color: #fff;
+		font-size: 1.5em;
+		font-weight: normal;
+		margin: 0;
+	}
+	h2 {
+		color: #c5cae9;
+		font-size: 1em;
+		font-weight: normal;
+		line-height: 1.5;
+		margin: 0;
+		padding-top: .25em;
+	}
+	fieldset {
+		border: none;
+		margin: 0;
+		padding: 1.5em 1em;
+		text-align: center;
+	}
+	legend,
+	label {
+		display: none;
+	}
+	input {
+		background: #eee;
+		border: 1px solid #ccc;
+		border-bottom: 3px solid #b6b6b6;
+		border-radius: 3px;
+		color: #b6b6b6;
+		font-size: 1em;
+		margin-bottom: 1em;
+		padding: .5em;
+		width: 85%;
+	}
+	input::-webkit-input-placeholder,
+	input::-moz-placeholder,
+	input:-ms-input-placeholder,
+	input::-webkit-input-placeholder {
+		color: #b6b6b6;
+	}
+	input::-webkit-input-placeholder,
+	input::-moz-placeholder,
+	input:-ms-input-placeholder,
+	input::placeholder {
+		color: #b6b6b6;
+	}
+	button {
+		background: #e91e63;
+		border: none;
+		border-radius: 3px;
+		color: #fff;
+		cursor: pointer;
+		font-size: .85em;
+		font-weight: 500;
+		margin: 1.5em .5em 0;
+		padding: 1em;
+		width: 100px;
+	}
+	.secondary {
+		background: #999;
+	}
+</style>
+
+<script>
+	window.console = window.console || function(t) {};
+</script>
+</head>
+<body>
+	<div class="container">
+		<div class="heading">
+			<h1>Login Now</h1>
+			<h2>Simple Login Control in CSS</h2>
+		</div>
+		<fieldset>
+			<legend>Login control</legend>
+			<label for="email">Email</label>
+			<input type="email" id="email" placeholder="email" required>
+			<label for="password">Password</label>
+			<input type="password" id="password" placeholder="password" required>
+			<button>Login</button>
+			<button class="secondary">Register</button>
+		</fieldset>
+	</div>
+</body>
+</html>
+
