@@ -44,28 +44,28 @@ function showCode(code, append = false) {
 	document.execCommand('copy'); // copy code to clipboard
 }
 
-function genCode(type) {
+function genCode(type, fields) {
 	switch (type) {
 		case 'string':
-			genStringDescriptor(); break;
+			genStringDescriptor(fields); break;
 		case 'date':
-			genDateDescriptor(); break;
+			genDateDescriptor(fields); break;
 		case 'number':
-			genNumberDescriptor(); break;
+			genNumberDescriptor(fields); break;
 		case 'clauses':
-			genClausesDescriptor(); break;
+			genClausesDescriptor(fields); break;
 		case 'image':
-			genImageDescriptor(); break;
+			genImageDescriptor(fields); break;
 		case 'checkbox':
-			genCheckboxDescriptor(); break;
+			genCheckboxDescriptor(fields); break;
 		case 'radio':
-			genRadioDescriptor(); break;
+			genRadioDescriptor(fields); break;
 		case 'telephone':
-			genTelephoneDescriptor(); break;
+			genTelephoneDescriptor(fields); break;
 		case 'signature':
-			genSignatureField(); break;
+			genSignatureField(fields); break;
 		case 'select':
-			genSelectDescriptor(); break;
+			genSelectDescriptor(fields); break;
 		default:
 			showAllPositions(); break;
 	}
@@ -122,19 +122,14 @@ function fieldText() {
 	return $("#field-type option:selected").text();
 }
 
-function genStringDescriptor() {
-	var divs = $('.selected');
-	if (divs.length == 0) {
-		return;
-	}
-
+function genStringDescriptor(fields) {
 	var lines = [];
 
 	lines.push("new Descriptors\\StringDescriptor([");
 	lines.push("  'caption' => 'XXX',"),
 	lines.push("  'positions' => [");
 
-	divs.each(function() {
+	fields.each(function() {
 		var top = $(this).css('top').slice(0, -2); // remove 'px'
 		var left = $(this).css('left').slice(0, -2);
 		var width = $(this).css('width').slice(0, -2);
@@ -153,28 +148,23 @@ function genStringDescriptor() {
 	showCode(lines);
 }
 
-function genDateDescriptor() {
-	var divs = $('.selected');
-	if (divs.length == 0) {
-		return;
-	}
-
+function genDateDescriptor(fields) {
 	var lines = [];
 
 	lines.push("new Descriptors\\DateDescriptor([");
 	lines.push("  'caption' => 'Date',");
 	lines.push("  'items' => [");
 
-	divs.each(function(index) {
+	fields.each(function(index) {
 		var top = $(this).css('top').slice(0, -2); // remove 'px'
 		var left = $(this).css('left').slice(0, -2);
 		var width = $(this).css('width').slice(0, -2);
 
-		if (divs.length == 1) {
+		if (fields.length == 1) {
 			lines.push("new Descriptors\\DateDescriptorItem([");
 			lines.push("  'format' => DateFormat::DATE_FULL,");
 		} else {
-			if (divs.length == 4 && index == 0) {
+			if (fields.length == 4 && index == 0) {
 				lines.push("new Descriptors\\DateDescriptorItem([");
 				lines.push("  'format' => DateFormat::TIME,");
 			}
@@ -211,19 +201,14 @@ function genDateDescriptor() {
 	showCode(lines);
 }
 
-function genNumberDescriptor() {
-	var divs = $('.selected');
-	if (divs.length == 0) {
-		return;
-	}
-
+function genNumberDescriptor(fields) {
 	var lines = [];
 
 	lines.push("new Descriptors\\NumberDescriptor([");
 	lines.push("  'format' => NumberFormat::CURRENCY,");
 	lines.push("  'caption' => 'Price of',");
 
-	divs.each(function(index) {
+	fields.each(function(index) {
 		var top = $(this).css('top').slice(0, -2); // remove 'px'
 		var left = $(this).css('left').slice(0, -2);
 		var width = $(this).css('width').slice(0, -2);
@@ -241,22 +226,17 @@ function genNumberDescriptor() {
 	showCode(lines);
 }
 
-function genSignatureField() {
-	var divs = $('.selected');
-	if (divs.length == 0) {
-		return;
-	}
-
+function genSignatureField(fields) {
 	var lines = [];
 
 	lines.push("new SignatureField([");
 
-	divs.each(function(index) {
+	fields.each(function(index) {
 		var top = $(this).css('top').slice(0, -2); // remove 'px'
 		var left = $(this).css('left').slice(0, -2);
 		var width = $(this).css('width').slice(0, -2);
 
-		if (divs.length == 1) { // Initials
+		if (fields.length == 1) { // Initials
 			lines.push("'position' => new Position([");
 			lines.push("  'top' => " + (top - 40) + ","); // ??
 			lines.push("  'left' => " + left + ",");
@@ -284,7 +264,7 @@ function genSignatureField() {
 		}
 	});
 
-	if (divs.length == 1) { // Initials
+	if (fields.length == 1) { // Initials
 		lines.push("  'type' => SignatureFieldType::INITIALS,");
 	} else {
 		lines.push("  'type' => SignatureFieldType::SIGNATURE,");
@@ -300,12 +280,7 @@ function genSignatureField() {
 	showCode(lines);
 }
 
-function genTelephoneDescriptor() {
-	var divs = $('.selected');
-	if (divs.length == 0) {
-		return;
-	}
-
+function genTelephoneDescriptor(fields) {
 	var lines = [];
 
 	lines.push("new Descriptors\\TelephoneDescriptor([");
@@ -313,12 +288,12 @@ function genTelephoneDescriptor() {
 	lines.push("  'format' => StringFormat::TELEPHONE,");
 	lines.push("  'items' => [");
 
-	divs.each(function(index) {
+	fields.each(function(index) {
 		var top = $(this).css('top').slice(0, -2); // remove 'px'
 		var left = $(this).css('left').slice(0, -2);
 		var width = $(this).css('width').slice(0, -2);
 
-		if (divs.length == 1) {
+		if (fields.length == 1) {
 			lines.push("new Descriptors\\TelephoneDescriptorItem([");
 			lines.push("  'format' => TelephoneFormat::CANADIAN,");
 			lines.push("  'position' => new Position([");
@@ -358,12 +333,7 @@ function genTelephoneDescriptor() {
 	showCode(lines);
 }
 
-function genRadioDescriptor() {
-	var divs = $('.selected');
-	if (divs.length == 0) {
-		return;
-	}
-
+function genRadioDescriptor(fields) {
 	var lines = [];
 
 	lines.push("new Descriptors\\RadioDescriptor([");
@@ -387,21 +357,10 @@ function genRadioDescriptor() {
 	showCode(lines);
 }
 
-function genClausesDescriptor() {
-}
-
-function genImageDescriptor() {
-}
-
-function genCheckboxDescriptor() {
-	var divs = $('.selected');
-	if (divs.length == 0) {
-		return;
-	}
-
+function genCheckboxDescriptor(fields) {
 	var lines = [];
 
-	divs.each(function(index) {
+	fields.each(function(index) {
 		var top = $(this).css('top').slice(0, -2); // remove 'px'
 		var left = $(this).css('left').slice(0, -2);
 		var width = 15; //$(this).css('width').slice(0, -2);
@@ -421,5 +380,11 @@ function genCheckboxDescriptor() {
 	showCode(lines);
 }
 
-function genSelectDescriptor() {
+function genClausesDescriptor(fields) {
+}
+
+function genImageDescriptor(fields) {
+}
+
+function genSelectDescriptor(fields) {
 }

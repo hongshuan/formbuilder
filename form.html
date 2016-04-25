@@ -32,8 +32,9 @@
         $("#bkimgs").change();
 
         $("#btn-gen-code").click(function() {
-            if ($('.selected').length > 0) {
-				genCode(fieldType());
+            var selectedFields = $('.selected');
+            if (selectedFields.length > 0) {
+				genCode(fieldType(), selectedFields);
             } else {
                 showAllPositions();
             }
