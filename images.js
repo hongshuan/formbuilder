@@ -55,7 +55,7 @@ function imageUrl(img) {
 
 function fillImageList() {
 	$.each(images, function (index, img) {
-		$('#bkimglist').append($('<option>', { 
+		$('#bkimgs').append($('<option>', { 
 			text : img
 		}));
 	});

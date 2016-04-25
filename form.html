@@ -19,21 +19,21 @@
     $(document).ready(function() {
 		fillImageList();
 
-        $("#descriptor").change(function() {
-            //$.data(currentDummy(), 'type', descriptorType());
-            //$.data(currentDummy(), 'data-title', descriptorType());
-            //currentDummy().attr('title', descriptorType());
+        $("#field-type").change(function() {
+            //$.data(currentField(), 'type', fieldType());
+            //$.data(currentField(), 'data-title', fieldType());
+            //currentField().attr('title', fieldType());
         });
 
-        $("#bkimglist").change(function() {
-            $('#source-form').css('background-image', imageUrl($('#bkimglist option:selected').text()));
-			$('.dummy').remove();
+        $("#bkimgs").change(function() {
+            $('#source-form').css('background-image', imageUrl($('#bkimgs option:selected').text()));
+			$('.field').remove();
         });
-        $("#bkimglist").change();
+        $("#bkimgs").change();
 
         $("#btn-gen-code").click(function() {
             if ($('.selected').length > 0) {
-				genCode(descriptorType());
+				genCode(fieldType());
             } else {
                 showAllPositions();
             }
@@ -46,10 +46,10 @@
 
   <div id="source-form"></div>
   <form>
-    <div><select id="bkimglist"></select></div>
+    <div><select id="bkimgs"></select></div>
 
     <div>
-      <select id="descriptor">
+      <select id="field-type">
         <option value=""></option>
         <option value="string">StringDescriptor</option>
         <option value=""></option>

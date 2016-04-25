@@ -29,11 +29,11 @@ textarea {
 	font: 12px Menlo,Monaco,Consolas,Lucida Console;
 }
 
-#descriptor { width: 320px; }
+#field-type { width: 320px; }
 
-#bkimglist { width: 400px; }
+#bkimgs { width: 400px; }
 
-.dummy {
+.field {
 	height: 12px;
 	position: absolute;
 	background-color: #ccc;
@@ -47,7 +47,7 @@ textarea {
 
 .signature { height: 50px; }
 
-.dummy[data-title]:hover:after {
+.field[data-title]:hover:after {
     content: attr(data-title);
     padding: 4px 8px;
     color: #000;

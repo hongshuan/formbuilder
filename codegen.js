@@ -74,7 +74,7 @@ function genCode(type) {
 function showAllPositions() {
 	var el = $('.selected');
 	if (el.length == 0) {
-		el = $('.dummy');
+		el = $('.field');
 	}
 
 	var lines = [];
@@ -114,12 +114,12 @@ function genPosition(top, left, width, height, index) {
 	return formatCode(lines);
 }
 
-function descriptorType() {
-	return $("#descriptor option:selected").val();
+function fieldType() {
+	return $("#field-type option:selected").val();
 }
 
-function descriptorText() {
-	return $("#descriptor option:selected").text();
+function fieldText() {
+	return $("#field-type option:selected").text();
 }
 
 function genStringDescriptor() {

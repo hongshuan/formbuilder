@@ -11,7 +11,7 @@ onmousedown = function(e) {
 		return;
 	}
 
-	if (!$(e.target).hasClass('dummy')) {
+	if (!$(e.target).hasClass('field')) {
 		unselect();
 	}
 };
@@ -22,7 +22,7 @@ onmouseup = function(e) {
 		endX = e.pageX; 
 		endY = e.pageY;
 
-		genDummy();
+		genField();
 	}
 };
 
@@ -33,7 +33,7 @@ onkeyup = function(e) {
 	//console.log(e);
 	//console.log('keyup: keycode=' + key + ', ' + 'ctrl=' + ctrlKey);
 
-	var current = currentDummy();
+	var current = currentField();
 
 	if (ctrlKey) {
 		if (key == 90) { // Ctrl-Z
@@ -57,7 +57,7 @@ onkeyup = function(e) {
 		} else if (key == 46) { // Delete
 			if ($('.selected').length > 0) {
 				$('.selected').remove();
-				indexDummies();
+				indexFields();
 			}
 		}
 	}
@@ -78,7 +78,7 @@ onkeydown = function(e) {
 }
 
 // create a div and add it to document
-function genDummy() {
+function genField() {
 	var divTop = startY - divHeight;
 	var divLeft = startX;
 	var divWidth = endX - startX;
@@ -87,39 +87,39 @@ function genDummy() {
 		return;
 	}
 
-	$('<div/>', { class: 'dummy' })
+	$('<div/>', { class: 'field' })
 	.css({
 		top: divTop + "px",
 		left: divLeft + "px",
 		width: divWidth + "px"
 	})
-	.attr('title', descriptorType())
+	.attr('title', fieldType())
 	.appendTo("#source-form")
 	.click(function(e) {
 		select($(this), e);
 	});
 
-	$.data(lastDummy(), 'type', descriptorType());
+	$.data(lastField(), 'type', fieldType());
 
-	indexDummies();
+	indexFields();
 }
 
-function indexDummies() {
-	$('.dummy').each(function(index) {
+function indexFields() {
+	$('.field').each(function(index) {
 		$(this).text(index + 1);
 	});
 }
 
-function currentDummy() {
+function currentField() {
 	var current = $('.selected');
 	if (current.length == 0) {
-		current = lastDummy(); 
+		current = lastField(); 
 	}
 	return current;
 }
 
-function lastDummy() {
-	return $('.dummy:last-child');
+function lastField() {
+	return $('.field:last-child');
 }
 
 function select(el, evt) {
