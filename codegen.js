@@ -337,21 +337,29 @@ function genRadioDescriptor(fields) {
 	var lines = [];
 
 	lines.push("new Descriptors\\RadioDescriptor([");
-	lines.push("	'caption' => 'XXX',");
+	lines.push("	'caption' => '---',");
 	lines.push("	'items' => [");
-	lines.push("		new Descriptors\\RadioDescriptorItem([");
-	lines.push("			'select_option' => new SelectOption([");
-	lines.push("				'caption' => 'XXX'");
-	lines.push("			])");
-	lines.push("		]),");
-	lines.push("		new Descriptors\\RadioDescriptorItem([");
-	lines.push("			'select_option' => new SelectOption([");
-	lines.push("				'caption' => 'XXX'");
-	lines.push("			])");
-	lines.push("		])");
+
+	fields.each(function(index) {
+		var top = $(this).css('top').slice(0, -2); // remove 'px'
+		var left = $(this).css('left').slice(0, -2);
+		var width = 15; //$(this).css('width').slice(0, -2);
+		var height = 15;
+
+		lines.push("	new Descriptors\\RadioDescriptorItem([");
+		lines.push("		'select_option' => new SelectOption([");
+		lines.push("			'caption' => '---'");
+		lines.push("		])");
+		lines.push("		'position' => new Position([");
+		lines.push("			'top' => " + (top - height) + ",");
+		lines.push("			'left' => " + left + ",");
+		lines.push("			'width' => " + width + ",");
+		lines.push("			'height' => " + height);
+		lines.push("		])");
+		lines.push("	]),");
+	});
+
 	lines.push("	],");
-	lines.push("	'is_preview' => false,");
-	lines.push("	'is_prerequisite' => true,");
 	lines.push("]),\n");
 
 	showCode(lines);
